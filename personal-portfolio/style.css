@@ -117,7 +117,7 @@ body:not(.js-ready) .loader { display: none; }
 .system-crumb>span:not(.crumb-dot) { color: var(--blue); }
 .crumb-dot, .system-online i, .footer-status i, .access-state i { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); }
 .system-tools { display: flex; align-items: center; gap: 15px; }
-.system-online { display: flex; align-items: center; gap: 6px; color: var(--green); font-size: 10px; font-weight: 700; }
+.system-online { display: flex; align-items: center; gap: 6px; color: var(--green); font-size: 11px; font-weight: 700; }
 .system-tools time { color: var(--muted); font: 10px var(--display); font-variant-numeric: tabular-nums; }
 .theme-toggle { display: grid; width: 29px; height: 29px; place-items: center; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; transition: border-color .2s, color .2s; }
 .theme-toggle:hover { border-color: var(--cyan); color: var(--cyan); }
@@ -430,6 +430,9 @@ body.js-ready .reveal.is-visible { opacity: 1; transform: none; }
   .hero-baseline { gap: 9px 13px; }
   .filter-row { gap: 3px; }
   .filter-label { width: 100%; }
+  .skill-card { grid-template-columns: 20px minmax(0, 1fr); column-gap: 8px; }
+  .skill-level { flex-wrap: wrap; gap: 3px; }
+  .skill-domain, .skill-level b { overflow-wrap: anywhere; }
   .filter-btn { padding-inline: 7px; font-size: 9px; }
   .dossier-row { grid-template-columns: .62fr 1.4fr; gap: 7px; padding: 8px 0; }
   .dossier-row>small { grid-column: 2; grid-row: 2; text-align: left; }
@@ -444,6 +447,25 @@ body.js-ready .reveal.is-visible { opacity: 1; transform: none; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
   .footer-end { width: 100%; justify-content: space-between; }
 }
+@media (max-width: 300px) {
+  .system-tools time { display: none; }
+}
+.rail-marker, .nav-link>span, .nav-link>b, .rail-footer, .system-crumb, .hero-overline, .hero-baseline, .hero-baseline small, .section-rail, .dossier-heading, .dossier-row>span, .dossier-row>small, .access-state, .filter-label, .filter-btn, .filter-count, .skill-number, .skill-domain, .skill-level, .project-type, .project-media>span, .log-visual>span, .tags span, .detail-button, .resource-link, .entry-number, .archive-entries small, .record-card, .contact-form label, .form-header, .footer-inner>p, .footer-status, .back-top, .modal-stack small, #modal-tags span {
+  font-size: 11px;
+}
+body { font-size: clamp(16px, calc(15px + .12vw), 17px); }
+.hero-kicker { font-size: 12px; }
+.hero-statement, .dossier-lead>p:last-child, .dossier-summary p, .skills-heading>p, .projects-heading>p, .project-description, .archive-heading>p:last-child, .archive-entries p, .contact-copy>p:not(.eyebrow):not(.contact-note), .contact-email, .contact-form input, .contact-form textarea, .modal-content>p:not(.eyebrow) { font-size: 16px; }
+.button { font-size: 12px; }
+.dossier-row>strong { font-size: 15px; }
+.skill-card h3 { font-size: 15px; }
+.log-content h3, .archive-entries h3 { font-size: 16px; }
+.log-content .project-description { font-size: 15px; }
+.contact-note { font-size: 13px; }
+.form-status { font-size: 14px; }
+.brand-title { font-size: 12px; }
+.brand-title small { font-size: 11px; }
+.contact-email i { font-size: 12px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
