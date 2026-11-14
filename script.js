@@ -14,9 +14,11 @@ function hideLoader() {
 hideLoader();
 
 const themeToggle = document.querySelector("#theme-toggle");
+const themeColor = document.querySelector('meta[name="theme-color"]');
 themeToggle.addEventListener("click", () => {
   const isLight = body.dataset.theme !== "light";
   body.dataset.theme = isLight ? "light" : "dark";
+  themeColor.content = isLight ? "#f4f7fb" : "#080b10";
   themeToggle.setAttribute("aria-pressed", String(!isLight));
   themeToggle.setAttribute("aria-label", `Switch to ${isLight ? "dark" : "light"} mode`);
   themeToggle.innerHTML = `<i class="fa-regular ${isLight ? "fa-moon" : "fa-sun"}" aria-hidden="true"></i>`;
@@ -152,18 +154,20 @@ const modalTitle = document.querySelector("#modal-title");
 const modalDescription = document.querySelector("#modal-description");
 const modalImage = document.querySelector("#modal-image");
 const modalTags = document.querySelector("#modal-tags");
-function openModal({ type, title, description, image, stack }) {
+function openModal({ type, title, description, image, imageAlt, imageFit, stack }) {
   modalType.textContent = type;
   modalTitle.textContent = title;
   modalDescription.textContent = description;
   if (image) {
     modalImage.src = image;
-    modalImage.alt = `${title} preview`;
+    modalImage.alt = imageAlt || `${title} preview`;
+    modalImage.classList.toggle("certificate-preview", imageFit === "contain");
     modalImage.hidden = false;
   } else {
     modalImage.hidden = true;
     modalImage.removeAttribute("src");
     modalImage.alt = "";
+    modalImage.classList.remove("certificate-preview");
   }
   modalTags.replaceChildren();
   stack.forEach((item) => {
@@ -192,8 +196,10 @@ document.querySelectorAll(".record-card").forEach((button) => {
       type: button.dataset.recordType,
       title: button.dataset.recordTitle,
       description: button.dataset.certificate,
-      image: "",
-      stack: ["EDITABLE RECORD"]
+      image: button.dataset.recordImage || "",
+      imageAlt: button.dataset.recordImageAlt,
+      imageFit: button.dataset.recordImageFit,
+      stack: (button.dataset.recordStack || "EDITABLE RECORD").split(", ")
     });
   });
 });

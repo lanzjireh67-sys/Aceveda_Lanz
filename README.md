@@ -8,7 +8,7 @@ Open `index.html` with VS Code Live Server, or serve this folder with a static w
 
 ## Customize
 
-- Replace the profile and project artwork in `images/`.
+- Replace the profile, project, and certificate artwork in `images/`.
 - Edit the personal details, biography, skill labels, project descriptions, and archive records in `index.html`.
 - Replace each project repository and demo `href="#"` with its project-specific URL.
 - The GitHub and LinkedIn links use the supplied profile URLs.
